@@ -1,0 +1,19 @@
+h1 Editing Search Word
+= form_for([@search_word_list, @search_word]) do |f|
+  = error_messages @search_word
+  p
+    = f.label :index
+    br/
+    = f.text_field :index
+  p
+    = f.label :display_value
+    br/
+    = f.text_field :display_value
+  p
+    = f.label :search_value
+    br/
+    = f.text_field :search_value
+  p
+    = f.submit 'Update'
+.button style="width:70px"
+.button style="width:70px"

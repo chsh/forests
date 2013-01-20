@@ -1,0 +1,20 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:tables_label), one_tables_path
+  span style="color:#999999"
+  = link_to @one_table.name, one_table_path(@one_table)
+  span style="color:#999999"
+  = t :idownload_label
+h1= t :download_label
+= form_tag do
+  | フォーマット:
+  | \#{radio_button_tag 'download_format', 'csv', true} CSV
+  | \#{radio_button_tag 'download_format', 'tsv', false} TSV(タブ区切りテキスト)
+  br/
+  | Windowsでの利用:
+  | \#{radio_button_tag 'target', 'windows', true} はい
+  | \#{radio_button_tag 'target', 'other', false} いいえ
+  br/
+  br/
+  = submit_tag t(:download_label)

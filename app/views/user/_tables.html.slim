@@ -1,0 +1,46 @@
+- if current_user.one_tables.count > 0
+  table
+    tr
+      th= t :name_label
+      th= t :operations_label
+      th= t :status_label
+    - current_user.one_tables.find_recent(5).each do |ot|
+      tr
+        td= h ot.name
+        td
+          = link_to t(:show_link_label), ot
+          = link_to t(:destroy_link_label), ot, :method => :delete, \
+            :data => { :confirm => t(:destroy_confirm_label) }
+        td= ot.status
+- else
+  div (no tables)
+.button style="width:70px"
+.button style="width:70px"
+h2 Given Tables
+table
+  tr
+    th= t :name_label
+    th= t :operations_label
+    th= t :status_label
+  - current_user.accessible_one_tables.each do |uad|
+    tr
+      td= h uad.one_table.name
+      td
+        = link_to_if uad.viewable?, 'Show', uad.one_table
+        = link_to_if uad.deletable?, 'Destroy', uad.one_table, \
+          :method => :delete, \
+          :data => { :confirm => t(:destroy_confirm_label) }
+      td= uad.one_table.status
+h2 Given Records
+table
+  tr
+    th Table Name
+    th ID
+    th= t :operations_label
+  - current_user.accessible_one_table_records.each do |uad|
+    tr
+      td= h uad.one_table.name
+      td= h uad.one_table_record_key
+      td
+        = link_to_if uad.viewable?, 'Show', one_table_one_table_record_path(uad.one_table, uad.one_table_record_key)
+        = link_to_if uad.deletable?, 'Destroy', one_table_one_table_record_path(uad.one_table, uad.one_table_record_key), :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }

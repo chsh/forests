@@ -1,0 +1,12 @@
+p
+  b Index:
+  = h @search_word.index
+p
+  b Display value:
+  = h @search_word.display_value
+p
+  b Search value:
+  = h @search_word.search_value
+= link_to t(:edit_link_label), edit_search_word_list_search_word_path(@search_word_list, @search_word)
+| \
+| \#{link_to t(:back_link_label), search_word_list_search_words_path(@search_word_list)}

@@ -1,0 +1,46 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li = t(:tables_label)
+
+.row
+  .span12
+    h1 = t :tables_label
+
+.row
+  .span12
+    - if @one_tables.count > 0
+      table.table
+        thead
+          tr
+            th= t :name_label
+            th= t :operations_label
+            th= t :status_label
+        tbody
+          - @one_tables.each do |ot|
+            tr
+              td= link_to ot.name, ot
+              td
+                - if can? :delete, OneTable
+                  = link_to t(:edit_link_label), edit_one_table_path(ot)
+                  '
+                - if can? :remove, OneTable
+                  = link_to t(:destroy_link_label), ot, :method => :delete, :data => {:confirm => t(:destroy_confirm_label) }
+                  '
+              td
+                - if ot.status.present?
+                  = t("import.status.#{ot.status}")
+                  span(style="float:right") = image_tag 'processing.gif', size: '20x20'
+
+    - else
+      div (no tables)
+
+.row
+  .span12
+    - if can? :create, OneTable
+      div align="right"
+        span.button
+          = link_to t(:new_one_table_label), new_one_table_path

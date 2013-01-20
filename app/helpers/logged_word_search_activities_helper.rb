@@ -1,0 +1,2 @@
+module LoggedWordSearchActivitiesHelper
+end

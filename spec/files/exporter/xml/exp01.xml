@@ -1,0 +1,253 @@
+<root>
+  <headers>
+    <header type="String" label="ID" multiple="0"/>
+    <header type="String" label="URL" multiple="0"/>
+    <header link_key="" type="String" label="マーカー種別" multiple="1" refname="" sysname="h0"/>
+    <header link_key="comment" type="Date" label="利用日付" multiple="0" refname="" sysname="h1"/>
+    <header link_key="" type="Integer" label="合計" multiple="0" refname="" sysname="h2"/>
+    <header link_key="" type="Text" label="備考" multiple="0" refname="" sysname="h3"/>
+  </headers>
+  <rows num_rows="12">
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000001</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000001.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Tue Sep 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>123</value>
+      </col>
+      <col>
+        <value>これは備考です。abc-xを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000002</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000002.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Sat Aug 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>124</value>
+      </col>
+      <col>
+        <value>これは備考です。abc-yを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000003</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000003.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Wed Jul 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>122</value>
+      </col>
+      <col>
+        <value>これは備考です。abc-zを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000004</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000004.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Mon Jun 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>120</value>
+      </col>
+      <col>
+        <value>これは備考です。abc+zを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000005</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000005.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Fri May 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>129</value>
+      </col>
+      <col>
+        <value>これは備考です。abc+xを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000006</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000006.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>abc</value>
+      </col>
+      <col>
+        <value>Wed Apr 29 15:00:00 UTC 2009</value>
+      </col>
+      <col>
+        <value>128</value>
+      </col>
+      <col>
+        <value>これは備考です。abc+yを含みます。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000007</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000007.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>いろは</value>
+      </col>
+      <col>
+        <value></value>
+      </col>
+      <col>
+        <value>456</value>
+      </col>
+      <col>
+        <value>これは一つのペンです。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000008</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000008.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>xyz</value>
+      </col>
+      <col>
+        <value>Sat Mar 20 15:00:00 UTC 2010</value>
+      </col>
+      <col>
+        <value>0</value>
+      </col>
+      <col>
+        <value>これは別の例Aです。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b7000009</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b7000009.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>xyz</value>
+      </col>
+      <col>
+        <value>Tue Apr 20 15:00:00 UTC 2010</value>
+      </col>
+      <col>
+        <value>10</value>
+      </col>
+      <col>
+        <value>これは別の例Bです。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b700000a</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b700000a.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>xyz</value>
+      </col>
+      <col>
+        <value>Thu May 20 15:00:00 UTC 2010</value>
+      </col>
+      <col>
+        <value>5</value>
+      </col>
+      <col>
+        <value>これは別の例Cです。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b260735970b700000b</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b260735970b700000b.html</value>
+      </col>
+      <col multiple="1" size="1">
+        <value>xyz</value>
+      </col>
+      <col>
+        <value>Sun Jun 20 15:00:00 UTC 2010</value>
+      </col>
+      <col>
+        <value>-1</value>
+      </col>
+      <col>
+        <value>これは別の例Dです。</value>
+      </col>
+    </row>
+    <row>
+      <col id="1">
+        <value>4cbfd7b360735970b700000c</value>
+      </col>
+      <col>
+        <value>http://test.com/detail-4cbfd7b360735970b700000c.html</value>
+      </col>
+      <col multiple="1" size="2">
+        <value>ABC</value>
+        <value>def</value>
+      </col>
+      <col>
+        <value>Wed May 09 15:00:00 UTC 2001</value>
+      </col>
+      <col>
+        <value>-2500</value>
+      </col>
+      <col>
+        <value>これは大文字の例です。ABCが入っています。</value>
+      </col>
+    </row>
+  </rows>
+</root>

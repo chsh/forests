@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      one_table_template:
+        name: "名称"
+        output_format: "デフォルト出力フォーマット"
+        output_encoding: "デフォルト出力文字コード"
+        output_lf: "デフォルト改行コード"
+        query: "検索キーワード"
+        sort1_key: "ソートキー(1)"
+        sort2_key: "ソートキー(2)"
+        sort3_key: "ソートキー(3)"
+        sort1_order: "ソート順(1)"
+        sort2_order: "ソート順(2)"
+        sort3_order: "ソート順(3)"
+      user:
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+  search: "検索"

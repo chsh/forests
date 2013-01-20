@@ -1,0 +1,18 @@
+h1 New Search Word
+= form_for([@search_word_list, @search_word]) do |f|
+  = error_messages @search_word
+  p
+    = f.label :index
+    br/
+    = f.text_field :index
+  p
+    = f.label :display_value
+    br/
+    = f.text_field :display_value
+  p
+    = f.label :search_value
+    br/
+    = f.text_field :search_value
+  p
+    = f.submit 'Create'
+= link_to t(:back_link_label), search_word_list_search_words_path(@search_word_list)

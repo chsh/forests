@@ -1,0 +1,49 @@
+- content_for :header_title do
+  | My Page for Site Admin
+div align="right"
+  .button style="width:70px"
+div
+  - if Site.enabled?
+    #sites
+      span.category= t(:sites_recent_updated_label)
+      - if current_user.sites.count > 0
+        table
+          tr
+            th= t :name_label
+            th colspan="3"
+          - current_user.sites.find_recent(5).each do |site|
+            tr
+              td= h site.name
+              td= link_to t(:show_link_label), site
+              td= link_to t(:edit_link_label), edit_site_path(site)
+              td= link_to t(:destroy_link_label), site, :method => :delete, \
+                :data => { :confirm => t(:destroy_confirm_label) }
+      - else
+        div (no sites)
+      div align="right"
+        | 　
+        span.button= link_to t(:new_site_label), new_site_path
+        | 　
+        span.button= link_to t(:show_all_label), sites_path
+    hr/
+  #tables
+    span.category= t(:tables_recent_updated_label)
+    - if current_user.one_tables.count > 0
+      table
+        tr
+          th= t :name_label
+          th= t :operations_label
+          th= t :status_label
+        - current_user.one_tables.find_recent(5).each do |ot|
+          tr
+            td= h ot.name
+            td
+              = link_to t(:show_link_label), ot
+              = link_to t(:destroy_link_label), ot, :method => :delete, \
+                :data => { :confirm => t(:destroy_confirm_label) }
+            td= ot.status
+    - else
+      div (no tables)
+    div align="right"
+      span.button= link_to t(:new_table_label), new_one_table_path
+      span.button= link_to t(:all_tables_label), one_tables_path

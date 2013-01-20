@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  search_word_list_id: 1
+  index: 1
+  display_value: MyString
+  search_value: MyString
+
+two:
+  search_word_list_id: 1
+  index: 1
+  display_value: MyString
+  search_value: MyString

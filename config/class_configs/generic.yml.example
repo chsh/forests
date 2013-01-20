@@ -1,0 +1,24 @@
+
+development:
+  mem_cache:
+    host: localhost:11211
+
+  site_filesystem:
+    mongo:
+      host: localhost
+      port: 27017
+      db: "one-table-site-filesystem-dev"
+
+  template_pack:
+    user_login: chsh
+
+test:
+  template_pack:
+    user_login: login1
+
+cucumber:
+  site_filesystem:
+    mongo:
+      host: localhost
+      port: 27017
+      db: "one-table-site-filesystem-cucumber"

@@ -1,0 +1,18 @@
+h1= t :show_row_label
+
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to t(:records_label), one_table_one_table_records_path(@one_table)
+
+= render partial: 'show'

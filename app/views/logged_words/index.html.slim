@@ -1,0 +1,11 @@
+h1 Listing logged_words
+table
+  tr
+    th Word
+    th Count
+  - @logged_words.each do |logged_word|
+    tr
+      td= logged_word.value
+      td= logged_word.count
+hr/
+= will_paginate @logged_words

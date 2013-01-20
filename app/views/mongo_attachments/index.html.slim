@@ -1,0 +1,4 @@
+ul
+  - @mongo_attachments.each do |ma|
+    li
+      | Size: #{ma.send :grid_attr, 'length'}, MD5: #{ma.send :grid_attr, 'md5'}

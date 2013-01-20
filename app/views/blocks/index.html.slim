@@ -1,0 +1,26 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :blocks_label
+h1= t :blocks_label
+div style="overflow:auto; table-layout: auto;"
+  table
+    tr
+      th= t :block_name
+      th= t :block_description
+      th= t :operations
+    - @blocks.each do |block|
+      tr
+        td= h block.name
+        td= h block.description
+        td
+          = link_to t(:show_link_label), [@site, block]
+          = link_to t(:edit_link_label), edit_site_block_path(@site, block)
+          = link_to t(:destroy_link_label), [@site, block], :method => :delete, \
+            :data => { :confirm => t(:destroy_confirm_label) }
+br/
+= link_to('New block', new_one_table_block_path(@one_table)) if @one_table

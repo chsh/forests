@@ -1,0 +1,5 @@
+h1= t :register
+= form_for @user, :url => register_account_path do |f|
+  = error_messages @user
+  = render :partial => "form", :object => f
+  = f.submit t(:register)

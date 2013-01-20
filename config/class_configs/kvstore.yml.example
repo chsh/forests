@@ -1,0 +1,16 @@
+
+development:
+  mongo_store:
+    host: localhost
+    port: 27017
+    database: tablee_kvstore_dev
+  kv_store:
+    source: 'mongo_store'
+
+test:
+  mongo_store:
+    host: localhost
+    port: 27017
+    database: tablee_kvstore_test
+  kv_store:
+    source: 'mongo_store'

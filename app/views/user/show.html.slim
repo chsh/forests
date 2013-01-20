@@ -1,0 +1,11 @@
+.row
+  .span12
+    h4 ユーザ情報表示・編集
+    p
+      = form_for current_user, url: account_path, method: 'PUT' do |f|
+        = f.label :password
+        = f.password_field :password
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+        br/
+        = f.submit "更新!"

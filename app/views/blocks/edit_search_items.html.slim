@@ -1,0 +1,79 @@
+javascript:
+  $(function() {
+    $("#sortable tbody").sortable();
+    $("#sortable tbody").disableSelection();
+    $('#edit_block_form').submit(function(){
+      var din = 1;
+      $('#sortable tbody>tr.item_row').each(function(index, element) {
+        var row = $(element);
+        var ss = row.children('td.select_state').first();
+        var di = ss.children('input.display_index');
+        var ch = ss.children('input[type=checkbox]');
+        if (ch.is(":checked")) {
+          di.val(din);
+          din += 1;
+        } else {
+          di.val('');
+        }
+      });
+      return true;
+    });
+  });
+
+css:
+  table, td, th {
+    border-bottom: 1px #dcdcdc solid;
+  }
+
+h1 Editing search items block
+- if current_user.search_word_lists.size > 0
+  - input_type_selections = SearchItems::SELECTIONS
+  - ha2 = current_user.search_word_lists.map { |swl| ["#{swl.name}", "swl_#{swl.id}"] }
+  - user_list_selections = ha2
+- else
+  - input_type_selections = SearchItems::SELECTIONS
+  - user_list_selections = []
+
+= form_for([@site, @block], :html => {:id => 'edit_block_form'}) do |f|
+  = error_messages @block
+  p
+    = f.label :name
+    br/
+    = f.text_field :name
+  p
+    = f.label :table
+    br/
+    = h @block.one_table.name
+    div = 'Search Items'
+    br/
+    table#sortable
+      tbody.content
+        tr
+          th
+          th= t :display
+          th= t :name_label
+          th Input Type
+          th List Values
+        - @block.block_items.items.each do |item|
+          tr.item_row
+            = f.fields_for 'search_items[]', item do |it|
+              td style="cursor: move"
+              td.select_state style="cursor: move"
+                = it.check_box :selected
+                = it.hidden_field :display_index, :class => 'display_index'
+              td style="cursor: move"
+              td= it.select :input_type, input_type_selections
+              td= it.select :user_list, user_list_selections, :include_blank => t(:select_if_needed)
+  p
+    = f.label :content
+    br/
+    = f.text_area :content
+  p
+    = f.label :show_in_menu, t(:show_in_menu_label)
+    br/
+    = f.check_box :show_in_menu
+  p
+    = f.submit 'Update'
+= link_to t(:show_link_label), [@site, @block]
+| \
+| \#{link_to t(:back_link_label), site_blocks_path(@site)}

@@ -1,0 +1,17 @@
+h1 Listing logged_word_search_activities
+table
+  tr
+    th Logged word
+    th Search activity
+    th
+    th
+    th
+  - @logged_word_search_activities.each do |logged_word_search_activity|
+    tr
+      td= logged_word_search_activity.logged_word_id
+      td= logged_word_search_activity.search_activity_id
+      td= link_to 'Show', logged_word_search_activity
+      td= link_to 'Edit', edit_logged_word_search_activity_path(logged_word_search_activity)
+      td= link_to 'Destroy', logged_word_search_activity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+br/
+= link_to 'New Logged word search activity', new_logged_word_search_activity_path

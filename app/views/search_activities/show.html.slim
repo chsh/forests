@@ -1,0 +1,7 @@
+p#notice= notice
+p
+  b Stamped at:
+  = @search_activity.stamped_at
+= link_to 'Edit', edit_search_activity_path(@search_activity)
+| \
+| \#{link_to 'Back', search_activities_path}

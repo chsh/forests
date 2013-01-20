@@ -1,0 +1,6 @@
+h1= t :edit_my_account_label
+= form_for @user, :url => account_path do |f|
+  = error_messages @user
+  = render :partial => "form", :object => f
+  = f.submit "Update"
+.button style="width:70px"

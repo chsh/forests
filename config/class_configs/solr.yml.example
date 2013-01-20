@@ -1,0 +1,23 @@
+
+development:
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/one-table-dev
+      options:
+          :autocommit: :off
+test:
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/one-table-test
+      options:
+          :autocommit: :off
+
+cucumber:
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/one-table-cucumber
+      options:
+          :autocommit: :off

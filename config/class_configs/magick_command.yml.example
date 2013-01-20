@@ -1,0 +1,8 @@
+
+development:
+  magick_command:
+    identify_path: '/opt/local/bin/identify'
+
+test:
+  magick_command:
+    identify_path: '/opt/local/bin/identify'

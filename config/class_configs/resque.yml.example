@@ -1,0 +1,18 @@
+
+development:
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: one_table_dev
+
+test:
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: one_table_test
+
+cucumber:
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: one_table_cucumber

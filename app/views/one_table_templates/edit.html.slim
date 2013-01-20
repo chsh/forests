@@ -1,0 +1,28 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to t(:listing_one_table_templates), one_table_one_table_templates_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to @one_table_template.name, \
+          one_table_one_table_template_path(@one_table, @one_table_template)
+        span(class="divider") = "/"
+      li 編集
+
+= render 'common/show_flash'
+
+h1 = t(:editing_one_table_template)
+
+= render 'form'
+
+= link_to 'Back', one_table_one_table_templates_path(@one_table)

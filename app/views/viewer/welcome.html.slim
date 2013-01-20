@@ -1,0 +1,11 @@
+.hero-unit
+  h2
+    | Welcome to #{Service.title}
+  p
+    - if current_user
+      | Logged in as #{link_to current_user.login, dashboard_path}
+      br
+      = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+    - else
+      = link_to 'Login', new_user_session_path, class: 'btn btn-primary'
+      = link_to 'Forgot Password', new_password_reset_path

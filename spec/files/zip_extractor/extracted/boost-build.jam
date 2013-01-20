@@ -1,0 +1,3 @@
+# Specify path to the boost build system
+BOOST_ROOT = ../../.. ;
+boost-build ../../../tools/build ;

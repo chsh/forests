@@ -1,0 +1,14 @@
+div
+  = link_to 'TOP', dashboard_path
+  | \&gt;
+  | \#{link_to 'search word lists', search_word_lists_path}
+  | \&gt;
+  | \#{@search_word_list.name}
+p
+  b
+    = t :name_label
+    | \:
+  = h @search_word_list.name
+p
+  b= link_to 'Search Words', search_word_list_search_words_path(@search_word_list)
+.button style="width:70px"

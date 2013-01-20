@@ -1,0 +1,12 @@
+h1= t :site_attributes_label
+= form_for @site.site_attributes, :url => attributes_site_path(@site) do |f|
+  div
+    table
+      tr
+        th Key
+        th Value
+      - @site.site_attributes.keys.sort.each_with_index do |sakey, index|
+        tr
+          td= sakey
+          td= f.text_field sakey, :value => @site.site_attributes[sakey]
+  = f.submit 'Update'

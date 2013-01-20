@@ -1,0 +1,10 @@
+p#notice= notice
+p
+  b Logged word:
+  = @logged_word_search_activity.logged_word_id
+p
+  b Search activity:
+  = @logged_word_search_activity.search_activity_id
+= link_to 'Edit', edit_logged_word_search_activity_path(@logged_word_search_activity)
+| \
+| \#{link_to 'Back', logged_word_search_activities_path}

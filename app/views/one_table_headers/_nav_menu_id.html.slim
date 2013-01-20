@@ -1,0 +1,11 @@
+.navtitle= t :table_management_label
+.navbox
+  ul.nav
+    li= link_to t(:one_table_information_label), one_table_path(@one_table)
+    li= link_to t(:one_table_one_table_headers_label), one_table_one_table_headers_path(@one_table)
+    li= link_to t(:new_one_table_one_table_header_label), new_one_table_one_table_header_path(@one_table)
+    li= link_to t(:one_table_one_table_records_label), one_table_one_table_records_path(@one_table)
+    li= link_to t(:new_one_table_one_table_record_label), new_one_table_one_table_record_path(@one_table)
+    li= link_to t(:import_one_table_label), import_one_table_path(@one_table)
+    /! <li></haml:block><haml:silent></haml:silent><haml:block></li>
+/! /navbox

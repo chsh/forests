@@ -1,0 +1,7 @@
+- content_for :header_title do
+  | My Page for Site Admin
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = t :account_label
+#account= render :partial =>'account'

@@ -1,0 +1,39 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to t(:headers_label), one_table_one_table_headers_path(@one_table)
+        span(class="divider") = "/"
+      li = t :viewing_header_label
+
+.row
+  .span12
+    h1= t :viewing_header_label
+    table.table
+      tr
+        th= t :primary_key_label
+        td= @one_table_header.primary_key
+      tr
+        th= t :label_label
+        td= @one_table_header.label
+      tr
+        th= t :refname_label
+        td= @one_table_header.refname
+      tr
+        th= t :kind_label
+        td= @one_table_header.kind
+      tr
+        th= t :multiple_label
+        td= @one_table_header.multiple
+      tr
+        th= t :metadata_json_label
+        td= @one_table_header.metadata_json

@@ -1,0 +1,15 @@
+table.table
+  - @row.each do |k, v|
+    tr
+      - if @row[k].is_a? Array
+        - vk = @row[k].join(', ')
+      - else
+        - if @row.file_field?(k)
+          - vk = view_by_type @row[k], :one_table_id => @one_table.id, :size_within => 40
+        - else
+          - vk = @row[k]
+      th
+        = v
+        '
+        span(style="color: grey; font-size: small") = "(#{k})"
+      td= vk

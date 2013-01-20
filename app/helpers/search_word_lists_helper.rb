@@ -1,0 +1,2 @@
+module SearchWordListsHelper
+end

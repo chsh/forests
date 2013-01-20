@@ -1,0 +1,128 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to t(:listing_one_table_templates), one_table_one_table_templates_path(@one_table)
+        span(class="divider") = "/"
+      li = @one_table_template.name
+
+= render 'common/show_flash'
+
+h1 = t(:showing_one_table_template)
+
+.row
+  .span3
+    h4 = t('activerecord.attributes.one_table_template.name')
+    = @one_table_template.name
+  .span3
+    h4 = t('activerecord.attributes.one_table_template.output_format')
+    = t("fileformat.#{@one_table_template.output_format_as_string}")
+  .span3
+    h4 = t('activerecord.attributes.one_table_template.output_encoding')
+    = @one_table_template.output_encoding_as_string
+  .span3
+    h4 = t('activerecord.attributes.one_table_template.output_lf')
+    = t("linefeed.#{@one_table_template.output_lf_as_string}")
+
+.row
+  - if @one_table_template.sort1_key.present?
+    .span3
+      h4 = t('activerecord.attributes.one_table_template.sort1_key')
+      = @one_table_template.sort1_key_as_string
+      = @one_table_template.sort1_order_as_string
+  - if @one_table_template.sort2_key.present?
+    .span3
+      h4 = t('activerecord.attributes.one_table_template.sort2_key')
+      = @one_table_template.sort2_key_as_string
+      = @one_table_template.sort2_order_as_string
+  - if @one_table_template.sort3_key.present?
+    .span3
+      h4 = t('activerecord.attributes.one_table_template.sort3_key')
+      = @one_table_template.sort3_key_as_string
+      = @one_table_template.sort3_order_as_string
+.row
+  .span12
+    hr/
+
+.row
+  .span2
+    h4 ダウンロード
+  .span10
+    = link_to download_one_table_one_table_template_path(@one_table_template.one_table, @one_table_template) do
+      = icon_tag(:download_alt)
+      '
+      | ダウンロード
+
+.row
+  .span12
+    hr/
+
+- if can? :manage, OneTable
+  .row
+    .span2
+      h4 アップロード
+    .span10
+      = form_for [:import, @one_table_template.one_table, @one_table_template], :html => { :multipart => true } do |f|
+        = f.file_field :file
+        = f.submit t(:exec_upload), class: 'btn btn-primary'
+.row
+  .span12
+    hr/
+.row
+  .span12
+    table.table
+      thead
+        tr
+          th = t(:field_name)
+          th = t(:alternative_label)
+          th = t(:output_target)
+          th = t(:query_label)
+      tbody
+        - @one_table_template.one_table_template_one_table_headers.each do |h|
+          tr
+            td
+              = h.one_table_header.label
+            td = h.label
+            td
+              - if h.index.present?
+                = icon_tag(:check)
+                '
+                = h.index
+            td = h.query
+
+.row
+  .span12
+    = link_to 'Edit', edit_one_table_one_table_template_path(@one_table, @one_table_template)
+    '|
+    = link_to 'Back', one_table_one_table_templates_path(@one_table)
+
+.row
+  .span12
+    hr/
+    h4 = t(:operation_activities)
+    table.table
+      thead
+        tr
+          th = t(:date_and_time)
+          th = t(:operator)
+          th = t(:command)
+      - @one_table_template.activities.each do |activity|
+        tbody
+          tr
+            td = activity.created_at.strftime('%Y/%m/%d %H:%M:%S')
+            td = activity.user.email
+            td
+              | 「
+              = activity.target.try(:name)
+              | 」
+              | を
+              = t(activity.action)

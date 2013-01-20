@@ -1,0 +1,251 @@
+
+development:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: forests_dev
+  mem_cache:
+    host: localhost:11211
+
+  site_filesystem:
+    mongo:
+      host: localhost
+      port: 27017
+      db: "forests-fs-dev"
+
+  template_pack:
+    user_login: chsh
+  mongo_store:
+    host: 127.0.0.1
+    port: 27017
+    database: forests_kvstore_dev
+  kv_store:
+    source: 'mongo_store'
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "forests-dev"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "forests-gridfs-dev"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "forests-sitefs-dev"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "forests-mediakeeper-dev"
+  magick_command:
+    identify_path: '/usr/local/bin/identify'
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: forests_dev
+  service:
+    title: "FORESTS (dev)"
+    provider: "shinsaku@chikura"
+    developer: "shinsaku@chikura"
+    provider_url: "http://shinsaku.chikura.me/"
+    developer_url: "http://shinsaku.chikura.me/"
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 3.minutes
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/forests-dev
+      options:
+          :autocommit: :off
+  static:
+    jquery: "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    jquery_ui: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"
+    jquery_ui_datepicker: "http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-ja.js"
+    jquery_ui_css: "/stylesheets/jquery_ui/default/jquery-ui-1.8.2.css"
+
+test:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: forests_test
+  template_pack:
+    user_login: login1
+  mongo_store:
+    host: localhost
+    port: 27017
+    database: forests_kvstore_test<%= ENV['TEST_ENV_NUMBER'] %>
+  kv_store:
+    source: 'mongo_store'
+  magick_command:
+    identify_path: '/usr/local/bin/identify'
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "forests-test<%= ENV['TEST_ENV_NUMBER'] %>"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "forests-gridfs-test<%= ENV['TEST_ENV_NUMBER'] %>"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "forests-sitefs-test<%= ENV['TEST_ENV_NUMBER'] %>"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "forests-mediakeeper-test<%= ENV['TEST_ENV_NUMBER'] %>"
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: forests_test<%= ENV['TEST_ENV_NUMBER'] %>
+  service:
+    title: incubox-test-service
+    provider: "Provider Corporation"
+    developer: "Developer Corporation"
+    provider_url: "http://provider.jp/"
+    developer_url: "http://developer.jp/"
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 1.seconds
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/forests-test<%= ENV['TEST_ENV_NUMBER'] %>
+      options:
+          :autocommit: :off
+  static:
+    jquery: "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    jquery_ui: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"
+    jquery_ui_datepicker: "http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-ja.js"
+    jquery_ui_css: "/stylesheets/jquery_ui/default/jquery-ui-1.8.2.css"
+
+# end test
+
+production:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: forests_live
+  mem_cache:
+    host: localhost:11211
+
+  site_filesystem:
+    mongo:
+      host: localhost
+      port: 27017
+      db: "forests-fs"
+
+  template_pack:
+    user_login: chsh
+  mongo_store:
+    host: 127.0.0.1
+    port: 27017
+    database: forests_kvstore_live
+  kv_store:
+    source: 'mongo_store'
+  magick_command:
+    identify_path: '/usr/bin/identify'
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "forests-live"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "forests-gridfs-live"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "forests-sitefs-live"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "forests-mediakeeper-live"
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: forests_live
+  service:
+    title: "FORESTS"
+    provider: "OUJ"
+    developer: "JOBSA"
+    provider_url: "http://www.ouj.ac.jp/"
+    developer_url: "http://www.jobsa.jp/"
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 15.minutes
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/solr/forests-live
+      options:
+          :autocommit: :off
+  static:
+    jquery: "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    jquery_ui: "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"
+    jquery_ui_datepicker: "http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-ja.js"
+    jquery_ui_css: "/stylesheets/jquery_ui/default/jquery-ui-1.8.2.css"
+
+
+cucumber:
+  site_filesystem:
+    mongo:
+      host: localhost
+      port: 27017
+      db: "forests-fs-cucumber"
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "forests-cucumber"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "forests-gridfs-cucumber"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "forests-sitefs-cucumber"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "forests-mediakeeper-cucumber"
+  resque:
+    host: 127.0.0.1
+    port: 6379
+    namespace: forests_cucumber
+  solr_connection:
+    default:
+      name: default
+      url: http://localhost:8080/dev-generic/forests-cucumber
+      options:
+          :autocommit: :off

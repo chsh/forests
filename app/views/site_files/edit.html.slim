@@ -1,0 +1,24 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = link_to "site:#{@site.name}:files", site_site_files_path(@site)
+div
+  = form_for [@site, @site_file], :html => { :multipart => true } do |f|
+    table
+      tr
+        th= f.label :path
+        td= f.text_field :path
+      tr
+        th= f.label :file
+        td= f.file_field :file
+    = f.submit 'Create'
+    .button style="width:70px"
+hr/
+p
+  | You can specify zip file for uploading multiple files.
+  br/
+  | When you to do so, be blank path text field.

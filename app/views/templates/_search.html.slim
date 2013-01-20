@@ -1,0 +1,5 @@
+= form_for @searcher do |f|
+  = f.label :query
+  | \: #{f.text_field :query}
+  br/
+  = submit_tag '検索'

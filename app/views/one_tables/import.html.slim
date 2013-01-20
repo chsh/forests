@@ -1,0 +1,47 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, @one_table
+        span(class="divider") = "/"
+      li= t(:import_label)
+
+
+.row
+  .span12
+    h2 = t :upload_data_label
+    = form_for [:import, @one_table], :html => { :multipart => true } do |f|
+      = f.file_field :file
+      = hidden_field_tag :honor_saved_values, '1'
+      br/
+      - if can? :remove, OneTable
+        = check_box_tag :do_delete
+        ' 削除データをアップロードする
+        br/
+      = f.submit t(:exec_upload), class: 'btn btn-primary'
+.row
+  .span12
+    h2= t :last_import_error_label
+    - if (le = @one_table.last_error)
+      table
+        tr
+          th Exception
+          td= le.class_name
+        tr
+          th Message
+          td= le.message
+        tr
+          th Backtrace
+          td
+            - le.backtrace do |line|
+              = line
+              br/
+      = link_to t(:clear_last_import_error_label), clear_last_error_one_table_path(@one_table), :method => :delete, :data => { :confirm => t(:clear_confirm_label) }
+    - else
+      = t :no_import_error_label

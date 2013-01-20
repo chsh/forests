@@ -1,0 +1,21 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = t :show_all_label
+- if current_user.permissions.creatable?(Site)
+  div align="right"
+    span.button= link_to t(:new_site_label), new_site_path
+h1= t :accessible_site_list_label
+table
+  tr
+    th= t :path_name
+    th= t :title
+    th= t :operations_label
+  - current_user.permissions.assigned_instances(Site).each do |site|
+    tr
+      td= h site.name
+      td= h site.title
+      td
+        = link_to_if site.permission.viewable?, t(:show_link_label), site
+        = link_to_if site.permission.editable?, t(:edit_link_label), edit_site_path(site)
+        = link_to_if site.permission.removable?, t(:destroy_link_label), site, :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }

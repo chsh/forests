@@ -1,0 +1,9 @@
+h1 Listing search_activities
+table
+  tr
+    th Words
+    th Stamped at
+  - @search_activities.each do |search_activity|
+    tr
+      td= search_activity.logged_words.words.join(', ')
+      td= search_activity.stamped_at

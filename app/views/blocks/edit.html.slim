@@ -1,0 +1,51 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :block_label
+h1= t :block_label
+= form_for([@site, @block]) do |f|
+  = error_messages @block
+  table
+    tr
+      th= f.label :name, t(:name_label)
+      td= f.text_field :name
+    tr
+      th= f.label :one_table, t(:one_table_label)
+      td
+        = f.select :one_table_id,  current_user.one_tables.collect { |ot| [ot.name, ot.id] }, { :include_blank => true }
+        a href="javascript:open_one_table_page();return false;" target="_blank"
+    tr
+      th= f.label :kind, t(:kind_label)
+      td= f.select :kind, Block::KINDS
+    tr
+      th= f.label :content, t(:content_label)
+      td= f.text_area :content
+      td= f.hidden_field :content_type
+    tr
+      th= f.label :conditions, t(:conditions_label)
+      td= f.text_field :conditions
+    tr
+      th= f.label :order, t(:order_label)
+      td= f.text_field :order
+    tr
+      th= f.label :limit, t(:limit_label)
+      td= f.text_field :limit
+    tr
+      th= f.label :show_in_menu, t(:show_in_menu_label)
+      td= f.check_box :show_in_menu
+  p
+    = f.submit 'Update'
+div align="right"
+  span.button style="width:70px"
+  span.button style="width:70px"
+
+javascript:
+  function open_one_table_page() {
+    var elm = document.getElementById('block_one_table_id');
+    var opt = elm.options[elm.selectedIndex];
+    window.open('/one_tables/' + opt.value, '_blank');
+  }

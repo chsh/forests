@@ -1,0 +1,12 @@
+log/*.log*
+tmp/**/*
+config/database.yml
+config/database.yml.production
+config/class_config.yml
+# config/class_configs/*.yml
+db/*.sqlite3
+rerun.txt
+doc/*
+sdoc
+**/*.rbc
+.project

@@ -1,0 +1,23 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :show_all_files_label
+div
+  h1= t :show_all_files_label
+  table
+    tr
+      th= t :path_label
+      th= t :operations_label
+    - @site_files.each do |sf|
+      tr
+        td= link_to sf.path, "/#{@site.name}/# sf.path
+        td
+      = link_to t(:edit_link_label), edit_site_site_file_path(@site, sf)
+      = link_to t(:destroy_link_label), [@site, sf], :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+hr/
+div
+  .button style="width:70px"

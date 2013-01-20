@@ -1,0 +1,10 @@
+h1 New Search Word List
+= form_for(@search_word_list) do |f|
+  = error_messages @search_word_list
+  p
+    = f.label :name
+    br/
+    = f.text_field :name
+  p
+    = f.submit 'Create'
+.button style="width:70px"

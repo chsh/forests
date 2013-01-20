@@ -1,0 +1,12 @@
+h1 Listing Search Word List
+table
+  tr
+    th= t :name_label
+  - @search_word_lists.each do |search_word_list|
+    tr
+      td= h search_word_list.name
+      td= link_to t(:show_link_label), search_word_list
+      td= link_to t(:edit_link_label), edit_search_word_list_path(search_word_list)
+      td= link_to t(:destroy_link_label), search_word_list, :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+br/
+.button style="width:70px"

@@ -1,0 +1,69 @@
+
+development:
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "one-table"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "one-table-gridfs"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "one-table-site-fs-dev"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "one-table-media-keeper-dev"
+
+test:
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "one-table-test"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "one-table-test-gridfs"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "one-table-site-fs-test"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "one-table-media-keeper-test"
+
+cucumber:
+  mongo_connection:
+    default:
+      name: default
+      host: localhost
+      port: 27017
+      db: "one-table-cucumber"
+    default_gridfs:
+      name: default_gridfs
+      host: localhost
+      port: 27017
+      db: "one-table-cucumber-gridfs"
+    site_filesystem:
+      name: site_filesystem
+      host: localhost
+      port: 27017
+      db: "one-table-site-fs-cucumber"
+    media_keeper:
+      name: media_keeper
+      host: localhost
+      port: 27017
+      db: "one-table-media-keeper-cucumber"

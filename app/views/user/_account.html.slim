@@ -1,0 +1,27 @@
+table
+  tr
+    th width="200px;"
+    td= h @user.login
+  tr
+    th= t :login_count_label
+    td= h @user.login_count
+  tr
+    th= t :last_request_at_label
+    td= h @user.last_request_at
+  tr
+    th= t :last_login_at_label
+    td= h @user.last_login_at
+  tr
+    th= t :current_login_at_label
+    td= h @user.current_login_at
+  tr
+    th= t :last_login_ip_label
+    td= h @user.last_login_ip
+  tr
+    th= t :current_login_ip_label
+    td= h @user.current_login_ip
+  tr
+    th= t :user_level_label
+    td= h @user.level_as_string
+div align="right"
+  .button style="width:30px"

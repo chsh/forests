@@ -1,0 +1,21 @@
+
+development:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: cc_dev
+
+test:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: cc_test
+
+production:
+  class_cache:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      namespace: cc_live

@@ -1,0 +1,25 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to @page.site.name, site_path(@page.site)
+  span style="color:#999999"
+  = link_to 'pages', site_pages_path(@page.site)
+p
+  b
+    = t :name_label
+    | \:
+  = h @page.name
+p
+  b Editable Content:
+  = h (@page.editable_content || '')[0,100]
+p
+  b Published:
+  = h @page.published
+p
+  b Blocks
+  - @page.block_keys.each do |block_name|
+    = link_to block_name, site_block_path(@site, @site.block_by_name(block_name)), :target => '_blank'
+.button style="width:70px"
+.button style="width:70px"

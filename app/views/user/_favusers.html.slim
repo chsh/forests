@@ -1,0 +1,15 @@
+- if current_user.fav_users.count > 0
+  table
+    tr
+      th Login
+      th Email
+      th= t :operations_label
+    - current_user.fav_users.each do |user|
+      tr
+        td= user.login
+        td= user.email
+        td
+- else
+  div (no fav users)
+.button style="width:70px"
+.button style="width:70px"

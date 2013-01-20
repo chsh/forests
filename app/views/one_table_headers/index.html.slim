@@ -1,0 +1,43 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = t :fields_label
+
+.row
+  .span12
+    h1= t :fields_label
+    table.table
+      tr
+        th= t :primary_key_label
+        th= t :label_label
+        th= t :refname_label
+        th= t :sysname_label
+        th= t :multiple_label
+        th= t :operations_label
+      - @one_table_headers.each do |oth|
+        tr
+          td= oth.primary_key? ? '○' : ''
+          td= link_to oth.label, one_table_one_table_header_path(@one_table, oth)
+          td= oth.refname
+          td= oth.sysname
+          td= oth.multiple? ? "○" : ''
+          td
+            - if can? :edit, OneTable
+              = link_to '編集', edit_one_table_one_table_header_path(@one_table, oth)
+    div
+      .button style="width:70px"
+
+- if can? :remove, OneTable
+  .row
+    .span12
+      = link_to t(:new_one_table_header), new_one_table_one_table_header_path(@one_table)

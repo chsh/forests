@@ -1,0 +1,15 @@
+- if current_user.sites.count > 0
+  table
+    tr
+      th= t :name_label
+      th colspan="3"
+    - current_user.sites.find_recent(5).each do |site|
+      tr
+        td= h site.name
+        td= link_to t(:show_link_label), site
+        td= link_to t(:edit_link_label), edit_site_path(site)
+        td= link_to t(:destroy_link_label), site, :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+- else
+  div (no sites)
+.button style="width:70px"
+.button style="width:70px"

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generated-by" content="Markdown PRO, http://markdownpro.com"/>
+<title></title>
+<style type="text/css">
+html,body{margin:0;padding:0;}
+body {padding: 20px}
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;}
+table{border-collapse:collapse;border-spacing:0;}
+ol,ul{list-style:none;}
+q:before,q:after,blockquote:before,blockquote:after{content:"";}
+html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+a:focus{outline:thin dotted;}
+a:hover,a:active{outline:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{border:0;-ms-interpolation-mode:bicubic;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;*overflow:visible;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}
+input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+textarea{overflow:auto;vertical-align:top;}
+html,body{background-color:#ffffff;}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;color:#404040;}
+.container{width:940px;margin-left:auto;margin-right:auto;zoom:1;}.container:before,.container:after{display:table;content:"";zoom:1;*display:inline;}
+.container:after{clear:both;}
+.container-fluid{position:relative;min-width:940px;padding-left:20px;padding-right:20px;zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";zoom:1;*display:inline;}
+.container-fluid:after{clear:both;}
+.container-fluid>.sidebar{float:left;width:220px;}
+.container-fluid>.content{margin-left:240px;}
+a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:hover{color:#00438a;text-decoration:underline;}
+.pull-right{float:right;}
+.pull-left{float:left;}
+.hide{display:none;}
+.show{display:block;}
+.row{zoom:1;margin-left:-20px;}.row:before,.row:after{display:table;content:"";zoom:1;*display:inline;}
+.row:after{clear:both;}
+p{font-size:13px;font-weight:normal;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
+h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
+h3,h4,h5,h6{line-height:36px;}
+h3{font-size:18px;}h3 small{font-size:14px;}
+h4{font-size:16px;}h4 small{font-size:12px;}
+h5{font-size:14px;}
+h6{font-size:13px;color:#bfbfbf;text-transform:uppercase;}
+ul,ol{margin:0 0 18px 25px;}
+ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
+ul{list-style:disc;}
+ol{list-style:decimal;}
+li{line-height:18px;color:#808080;}
+ul.unstyled{list-style:none;margin-left:0;}
+dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
+dl dt{font-weight:bold;}
+dl dd{margin-left:9px;}
+hr{margin:20px 0 19px;border:0;border-bottom:1px solid #eee;}
+strong{font-style:inherit;font-weight:bold;}
+em{font-style:italic;font-weight:inherit;line-height:inherit;}
+.muted{color:#bfbfbf;}
+blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;}
+blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
+address{display:block;line-height:18px;margin-bottom:18px;}
+code,pre{padding:0 3px 2px;font-family:Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+code{padding:1px 3px;}
+pre{background-color:#f5f5f5;display:block;padding:8.5px;margin:0 0 18px;line-height:18px;font-size:12px;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
+form{margin-bottom:18px;}
+fieldset{margin-bottom:18px;padding-top:18px;}fieldset legend{display:block;padding-left:150px;font-size:19.5px;line-height:1;color:#404040;*padding:0 0 5px 145px;*line-height:1.5;}
+form .clearfix{margin-bottom:18px;zoom:1;}form .clearfix:before,form .clearfix:after{display:table;content:"";zoom:1;*display:inline;}
+form .clearfix:after{clear:both;}
+label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:normal;}
+label{padding-top:6px;font-size:13px;line-height:18px;float:left;width:130px;text-align:right;color:#404040;}
+form .input{margin-left:150px;}
+input[type=checkbox],input[type=radio]{cursor:pointer;}
+input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;}
+input[type=file]{background-color:#ffffff;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
+select,input[type=file]{height:27px;line-height:27px;*margin-top:4px;}
+select[multiple]{height:inherit;}
+textarea{height:auto;}
+.uneditable-input{background-color:#ffffff;display:block;border-color:#eee;-webkit-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);cursor:not-allowed;}
+:-moz-placeholder{color:#bfbfbf;}
+::-webkit-input-placeholder{color:#bfbfbf;}
+input,textarea{-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);}
+input:focus,textarea:focus{outline:0;border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);}
+input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:1px dotted #666;}
+form div.clearfix.error{background:#fae5e3;padding:10px 0;margin:-10px 0 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}form div.clearfix.error>label,form div.clearfix.error span.help-inline,form div.clearfix.error span.help-block{color:#9d261d;}
+form div.clearfix.error input,form div.clearfix.error textarea{border-color:#c87872;-webkit-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);-moz-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);box-shadow:0 0 3px rgba(171, 41, 32, 0.25);}form div.clearfix.error input:focus,form div.clearfix.error textarea:focus{border-color:#b9554d;-webkit-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);-moz-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);box-shadow:0 0 6px rgba(171, 41, 32, 0.5);}
+form div.clearfix.error .input-prepend span.add-on,form div.clearfix.error .input-append span.add-on{background:#f4c8c5;border-color:#c87872;color:#b9554d;}
+table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;*border-collapse:collapse;font-size:13px;border:1px solid #ddd;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
+table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom:1px solid #ddd;}
+table td{vertical-align:top;}
+table th+th,table td+td{border-left:1px solid #ddd;}
+table tr+tr td{border-top:1px solid #ddd;}
+table tbody tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
+table tbody tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;}
+table tbody tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}
+table tbody tr:last-child td:last-child{-webkit-border-radius:0 0 4px 0;-moz-border-radius:0 0 4px 0;border-radius:0 0 4px 0;}
+.zebra-striped tbody tr:nth-child(odd) td{background-color:#f9f9f9;}
+.zebra-striped tbody tr:hover td{background-color:#f5f5f5;}
+.zebra-striped .header{cursor:pointer;}.zebra-striped .header:after{content:"";float:right;margin-top:7px;border-width:0 4px 4px;border-style:solid;border-color:#000 transparent;visibility:hidden;}
+.zebra-striped .header:hover:after{visibility:visible;}
+footer{margin-top:17px;padding-top:17px;border-top:1px solid #eee;}
+.page-header{margin-bottom:17px;border-bottom:1px solid #ddd;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}.page-header h1{margin-bottom:8px;}
+.close{float:right;color:#000000;font-size:20px;font-weight:bold;line-height:13.5px;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-khtml-opacity:0.2;-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-khtml-opacity:0.4;-moz-opacity:0.4;opacity:0.4;}
+
+pre {
+	padding: 0;
+	margin: 10px 0px 10px;
+	overflow: auto; /*--If the Code exceeds the width, a scrolling is available--*/
+	overflow-Y: hidden;  /*--Hides vertical scroll created by IE--*/
+}
+pre code {
+	margin: 5px;  /*--Left Margin--*/
+	padding: 0px;
+	display: block;
+    line-height: 18px;
+}
+.center { text-align:center}
+.left {text-align:left}
+.right {text-align:right}
+
+</style><style type="text/css">
+body {
+	font-family: "Geneva", Arial, sans-serif;
+	font-size: 13px;
+	margin: 10px;
+}
+
+a, a:visited {
+	color: #09c;
+}
+
+a:hover {
+	color: #336699;
+	text-decoration: none;
+}
+
+h1 {
+	margin: 0px 0px 10px;	
+	font-weight: bold;
+}
+
+h2 {
+	border-bottom: 2px dotted #ccc;
+	margin: 5px 0px 15px;	
+}
+
+h6 {
+	color: #09c;
+}
+
+blockquote {
+	font-family: "Georgia", Courier New, courier, sans-serif;
+	background: #efefef;
+	padding: 5px 10px;
+	border: solid 1px #ddd;
+	margin: 15px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	color:  #333;
+	
+}
+
+ul, ol {
+	margin-bottom: 15px;
+}
+
+li {
+	padding: 3px;
+}
+
+
+
+code {
+	background-color: #f1f1f1;
+    color: #336699;
+}
+
+pre {
+	background-color: #f1f1f1;
+}
+
+pre > code {
+	margin: 0px;
+	padding: 5px;
+	border: 0px;
+	background-color: #f1f1f1;
+}
+
+
+</style></head>
+<body>
+<h1>FORESTS 画面操作説明</h1>
+
+<h2>サービストップ(ログイン前)</h2>
+
+<p><a href="1.before-login.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>この画面はサービスにアクセスした際に表示されます。
+このページを含め、右上にある「操作マニュアル」をクリックすると、別ページで操作マニュアルを確認することができます。</p>
+
+<h3>操作</h3>
+
+<p>ログインボタンを押して、ログイン画面に進みます。</p>
+
+<h2>ログイン</h2>
+
+<p><a href="2.login.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>この画面では、IDの入力とパスワードを確認します。
+ログイン後は、テーブル一覧画面に遷移します。</p>
+
+<h3>操作</h3>
+
+<p>(1) にID、(2)にパスワードを入力してログインボタンを押します。</p>
+
+<p>(3)のチェックボックスは、ブラウザを閉じてもログイン状態を継続する際に利用します。</p>
+
+<p>ログイン名・パスワードが違っていると「ログイン名またはパスワードが違います。」というメッセージが黄色で表示されます。ログイン名が無効になっていると「該当ユーザはアカウントが無効です。」と赤色で表示されます。</p>
+
+<h2>テーブル一覧</h2>
+
+<p><a href="4.table-list.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>テーブルの一覧表示および、新規テーブルの作成に進む画面です。</p>
+
+<h3>操作</h3>
+
+<p>(1)でテーブルの詳細情報に移動します。</p>
+
+<p>(2) でテーブルの名称を変更できます。</p>
+
+<p>(3) でテーブルを削除します。</p>
+
+<p>(4) でテーブルを新規に作成する画面に進みます。</p>
+
+<h2>テーブル新規作成</h2>
+
+<p><a href="5.new-table.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>テーブルを新規に作成します。テーブルの新規作成は、テーブルの管理権限を持っているユーザのみ可能です。</p>
+
+<h3>操作</h3>
+
+<p>(1) に作成したいテーブルの名称を入力します。
+名称はシステムの中で利用されません。
+日本語も含め自由に登録できます。
+後から変更することも可能です。</p>
+
+<p>(2) 基本データとなるファイルをアップロードします。
+アップロードをしない場合、テーブルは空の状態で作成されます。
+アップロードをする場合、そのファイル中で定義された項目名が自動的に作成され、項目に対応する形でデータも取り込まれます。
+アップロードに利用できるファイル形式は、CSV, TSV, XLS。CSV, TSVの場合は文字コードが自動判別されます。</p>
+
+<p>(1)と(2)の指定が終わったら、Create One Tableボタンをクリックし、アップロードを行います。
+アップロードが終わるとすぐに次の画面に遷移しますが、サーバ上では継続して取り込み動作を行っています。</p>
+
+<h2>テーブル操作</h2>
+
+<p><a href="6.show-table.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>テーブルに関する操作として、</p>
+
+<ul>
+<li>フィールド名の表示・編集</li>
+<li>レコードの表示・編集・検索</li>
+<li>データのアップロード</li>
+<li>出力フォーマットの作成・ダウンロード</li>
+<li>テーブルのコピー(権限を有している人のみ)</li>
+</ul>
+
+<p>などを行う中心的な画面です。</p>
+
+<h3>操作</h3>
+
+<p>(1) でレコードの検索ができます。</p>
+
+<p>(2) には「データ取り込み中」など、時間のかかる処理が行われているときにその内容が表示されます。この内容が表示されている間は、画面が一定のタイミングでリロードされ、進捗がわかるようになっています。</p>
+
+<p>(3) でフィールド一覧の表示・編集画面に進みます。</p>
+
+<p>(4) でレコード一覧の表示画面に進みます。</p>
+
+<p>(5) データをアップロードします。フィールドに科目コードなどがユニークキー指定してある場合、そのキーを含むレコードは更新されます。
+それ以外は追加されます。</p>
+
+<p>(6) テーブルデータのコピーを行います。(権限を持っている利用者のみ表示されます)</p>
+
+<p>(7) 出力フォーマット一覧画面に遷移します。</p>
+
+<p>(8) 定義済みの出力フォーマット表示画面に遷移します。</p>
+
+<p>(9) 定義済みの出力フォーマットでダウンロードを行います。</p>
+
+<p>(10) 新しく出力フォーマットを作成します。</p>
+
+<p>(11) 利用者の操作記録が表示されます。記録されるのは、ダウンロードおよびテーブルデータの更新に関連する操作です。</p>
+
+<h2>フィールド一覧・編集</h2>
+
+<p><a href="7.view-fields.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>テーブルに定義されたフィールドを一覧・編集する画面です。</p>
+
+<h3>操作</h3>
+
+<p>(1) 編集をクリックするとその行のフィールド内容が定義できる画面に遷移します。</p>
+
+<p>(2) ユニークキー指定がある場合、この部分に「○」が表示されます。</p>
+
+<p>(3) ページの最下部部分にあるリンクからフィールドを追加できます。テーブル削除権限以上を持っているユーザのみ表示されます。</p>
+
+<h2>フィールド追加・編集画面</h2>
+
+<p><a href="8.edit-fields.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>フィールドの名称・データ型などを編集します。</p>
+
+<h3>操作</h3>
+
+<p>(1) キー項目の場合はチェックします。１つのテーブルに対しキー項目は最大３つまでしか設定できません。すでに３つ設定されている場合、この項目はチェックできないようになります。</p>
+
+<p>(2) 日本語名称です。ほかのフィールドのラベルと重複させることはできません。</p>
+
+<p>(3) システム名です。英数字で表記しますが、なくてもかまいません。</p>
+
+<p>(4) データ種別です。基本的には「コード（固定文字列）」「テキスト」「日付」「数字」のいずれかを使う形になります。</p>
+
+<p>(5) 複数のデータを持つフィールドを設定する場合に指定しますが、現状ではデータを編集するインターフェースはなく、システム側での作業になります。</p>
+
+<p>(6) メタデータ定義です。フィールドに特別に付与したい属性がある場合に指定しますが、システム側での利用に限定されますので、特に気にされなくても大丈夫です。</p>
+
+<p>(7) 更新ボタンを押して登録ないし更新を行います。</p>
+
+<h2>レコード一覧・編集</h2>
+
+<p><a href="9.record-list.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>レコードを表示、編集、削除するためのトップ画面です。
+(今後レイアウトの改善予定があります)</p>
+
+<h3>操作</h3>
+
+<p>(1) で検索を行います。</p>
+
+<p>(2) で対象レコードを表示します。</p>
+
+<p>(3) で対象レコードを編集します。</p>
+
+<p>(4) で対象レコードを削除します。確認画面が表示されます。</p>
+
+<h2>レコード表示</h2>
+
+<p><a href="10.show-record.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>１レコードの詳細を表示します。</p>
+
+<h3>操作</h3>
+
+<p>特にありません。</p>
+
+<h2>レコード編集</h2>
+
+<p><a href="11.edit-record.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>レコードを編集する画面です。</p>
+
+<h3>操作</h3>
+
+<p>表示されているフィールドを編集し、終了したら画面最下部にある「更新」ボタンを押します。グレーで表示されているフィールドがある場合、それは他のフィールド値からシステムが自動的に作成するフィールドのため、編集することはできません。</p>
+
+<h2>データアップロード</h2>
+
+<p><a href="12.data-upload.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>データファイルをアップロードする画面です。</p>
+
+<p>アップロード時にエラーがあった場合、この画面でエラーの内容を確認できます。</p>
+
+<p>データファイルのサイズにもよりますが、アップロードは時間がかかります。アップロードが終わったらテーブル表示画面に戻ると、データの取り込み状況を確認することができます。</p>
+
+<h3>操作</h3>
+
+<p>(1) アップロードするデータファイルを選択します。</p>
+
+<p>(2) アップロードを実行します。</p>
+
+<p>(3) アップロードエラーがあった場合、エラー内容が表示されます。</p>
+
+<h2>出力フォーマット一覧</h2>
+
+<p><a href="13.outputformat-list.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>出力フォーマットの名称と出力形式の詳細を表示し、閲覧・ダウンロード・編集・削除といった操作が行えます。</p>
+
+<p>テーブル表示画面の右側にも同様の表示エリアがありますが、こちらはすべてのフォーマットが表示されます。</p>
+
+<h3>操作</h3>
+
+<p>(1) ダウンロードを実行します。</p>
+
+<p>(2) 設定内容が表示される画面に遷移します。</p>
+
+<p>(3) 設定内容を編集する画面に遷移します。</p>
+
+<p>(4) 出力フォーマットを削除します。</p>
+
+<h2>出力フォーマット表示</h2>
+
+<p><a href="14.show-outputformat.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>テーブル定義に対し、どのフィールドが出力内容となっているかを表示する画面です。また、テーブル定義とは異なるフィールド名称を持つデータがある場合、この画面を経由してアップロードを行います。</p>
+
+<h3>操作</h3>
+
+<p>(1) でアップロードファイルを指定し、(2)で実施します。</p>
+
+<p>テーブル定義と異なるフィールド名称がある場合(3)に表示されます。</p>
+
+<p>出力対象フィールドとその順序は(4)に表示されます。</p>
+
+<h2>出力フォーマット編集</h2>
+
+<p><a href="15.edit-outputformat.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>出力フォーマットを定義します。</p>
+
+<h3>操作</h3>
+
+<p>(1) 出力フォーマットの名称を定義します。システム的には利用されませんので自由に名前をつけることができます。</p>
+
+<p>(2) デフォルトの出力フォーマットです。CSV, TSV(タブ区切りテキスト)が選択できます。</p>
+
+<p>(3) デフォルトの出力文字コードです。Windows ShiftJIS(CP932)、EUC-JP、UTF-8が選択できます。</p>
+
+<p>(4) デフォルトの改行コードです。Windows (CR+LF)、Unix(LF), 旧Mac(CR)が選択できます。</p>
+
+<p>(5) 検索キーワードです。これがある場合、この検索キーワードにヒットするレコードのみ出力されます。</p>
+
+<p>(6) 出力レコードのソートキーフィールド名です。(7)が出力の順序です。ソートキーは(8), (9)のように３段階まで指定できます。</p>
+
+<p>(10) フィールド名です。</p>
+
+<p>(11) 出力フォーマットで用いるフィールド名が(10)と異なる場合、ここで指定します。</p>
+
+<p>(12) 出力対象フィールドを指定します。数字が入っているものが出力対象となり、小さい数字から大きい数字に向かってフィールド値が並びます。数字の大小だけを比較しているので、順番が飛んでいてもかまいません。</p>
+
+<p>(13) フィールド単位での検索語を指定します。</p>
+
+<p>(14) 出力フィールド指定時にわかりやすいようデータの一部を表示しています。</p>
+
+<h2>ユーザ管理</h2>
+
+<p><a href="16.user-list.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>ユーザの一覧を確認します。</p>
+
+<h3>操作</h3>
+
+<p>(1) 作成したユーザの情報を編集する画面に遷移します。</p>
+
+<p>(2) 新しくユーザを作成します。</p>
+
+<h2>ユーザ編集</h2>
+
+<p><a href="17.user-edit.png">image</a></p>
+
+<h3>ページの目的</h3>
+
+<p>ユーザ情報を編集します。</p>
+
+<h3>操作</h3>
+
+<p>(1) Level: ユーザの権限を設定します。</p>
+
+<ul>
+<li>(アカウント無効)</li>
+<li>データ閲覧可能</li>
+<li>データ閲覧・編集可能</li>
+<li>データ閲覧・編集・削除可能</li>
+<li>システム管理者</li>
+</ul>
+
+<p>のいずれかを選択できます。</p>
+
+<p>(2) Login: ログイン名です。必須項目です。他と重複する名前はつけられません。</p>
+
+<p>(3) Email: メールアドレスです。設定は任意です。</p>
+
+<p>(4) パスワード: パスワードを設定します。</p>
+
+<p>Update Userで情報を更新します。</p>
+
+</body>
+</html>

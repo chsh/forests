@@ -1,0 +1,4 @@
+#reftables
+  ul
+    - @site.one_tables.each do |one_table|
+      li= link_to one_table.name, one_table_path(one_table)

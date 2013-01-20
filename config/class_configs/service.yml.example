@@ -1,0 +1,14 @@
+
+development:
+  service:
+    title: incuBox
+    provider: "ThinQ Corporation"
+    developer: "ThinQ Corporation"
+    provider_url: "http://thinq.jp/"
+    developer_url: "http://thinq.jp/"
+
+#production:
+#  service:
+#    name: FOREST
+#    provider: "Open University of Japan"
+#    develper: "ThinQ Corporation"

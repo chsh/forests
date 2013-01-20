@@ -1,0 +1,27 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = link_to 'site attributes', [@site, :site_attributes]
+  span style="color:#999999"
+  | Edit
+h1= t 'editing_site_attribute_label'
+= form_for([@site, @site_attribute], :html => { :multipart => true }) do |f|
+  = error_messages @site_attribute
+  table
+    tr
+      th= f.label :key
+      td= f.text_field :key
+    tr
+      th= f.label :value
+      td= f.text_field :value
+    tr
+      th= f.label :file
+      td= f.file_field :file
+  p
+    = f.submit 'Update'
+span.button style="width:70px"
+span.button style="width:70px"

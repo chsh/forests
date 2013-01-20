@@ -1,0 +1,13 @@
+table
+  tr
+    th width="200px"
+    td= form.text_field :login
+  tr
+    th= form.label :email, t(:email)
+    td= form.text_field :email
+  tr
+    th= form.label :password, form.object.new_record? ? t(:password): t(:change_password)
+    td= form.password_field :password
+  tr
+    th= form.label :password_confirmation, t(:password_confirmation)
+    td= form.password_field :password_confirmation

@@ -1,0 +1,16 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to 'ユーザ一覧', admin_users_path
+        span(class="divider") = "/"
+      li
+        | 新規登録
+
+.row
+  .span12
+    = render 'form'
+    .button style="width:70px"

@@ -1,0 +1,7 @@
+- {notice: :success, error: :error, alert: :warning }.each do |key, value|
+  - if flash[key].present?
+    .row
+      .span12
+        div(class="alert alert-#{value}")
+          a(class='close' data-dismiss='alert') &times;
+          = flash[key]

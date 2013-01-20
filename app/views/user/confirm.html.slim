@@ -1,0 +1,14 @@
+h1= t :register_confirmation
+= form_for @user, :url => activate_account_path do |f|
+  = error_messages @user
+  = f.label :login, t(:login)
+  br/
+  = f.text_field :login
+  br/
+  br/
+  = f.label :password, t(:password)
+  br/
+  = f.password_field :password
+  br/
+  br/
+  = f.submit t(:register_confirmation_complete)

@@ -1,0 +1,11 @@
+h1
+  | テーブル: #{@one_table.name}への権限割り当て
+- form_tag do
+  table
+    tr
+      th ユーザログイン名
+      td= text_field_tag 'user_login'
+    tr
+      th 権限
+      td= select_tag 'user_permission', options_for_select([['閲覧可能', 'viewable'], ['編集可能', 'editable']])
+  = submit_tag t(:assign_label)

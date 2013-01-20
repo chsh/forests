@@ -1,0 +1,20 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+
+.row
+  .span12
+    h1= t :edit_table_label
+    = semantic_form_for @one_table do |f|
+      = f.inputs do
+        = f.input :name
+      = f.actions do
+        = f.action :submit

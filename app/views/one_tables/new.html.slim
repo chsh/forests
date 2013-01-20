@@ -1,0 +1,7 @@
+h1= t :new_table_label
+= semantic_form_for @one_table, html: {multipart: true} do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :file, as: :file
+  = f.actions do
+    = f.action :submit

@@ -1,0 +1,42 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = site_title_or_name(@site)
+  span style="color:#999999"
+  = t :info_label
+table
+  tr
+    th width="200px;"
+    td= h @site.name
+  tr
+    th= t :title
+    td= h @site.title
+  tr
+    th= t :description
+    td= h @site.description
+div
+  div align="right"
+    - if current_user.permissions.editable?(@site)
+      span.button= link_to t(:edit_link_label), edit_site_path(@site)
+    span.button= link_to t(:view_site_label), "/# @site.name
+h2= t :optional_operations_label
+  - if @site.search_exportable?
+    = link_to t(:search_export_message), search_export_site_path(@site)
+  div
+  - if @site.show_in_menu_blocks?
+    h2= t :block_shortcut_label
+    table
+      tr
+        th= t :block_name
+        th= t :block_description
+        th= t :operations
+      - @site.show_in_menu_blocks.each do |block|
+        tr
+          td= h block.name
+          td= h block.description
+          td
+            = link_to t(:show_link_label), [@site, block]
+            = link_to t(:edit_link_label), edit_site_block_path(@site, block)
+            = link_to t(:destroy_link_label), [@site, block], :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }

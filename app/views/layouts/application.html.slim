@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title FORESTS
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to 'FORESTS', root_path, class: 'brand'
+          - if current_user
+            .nav-collapse
+              = tabs
+              ul.nav.nav-pills.pull-right
+                li= link_to "操作マニュアル", "/manuals/index.html", target: '_blank'
+                li= render 'layouts/account'
+          - else
+            .nav-collapse
+              ul.nav.nav-pills.pull-right
+                li= link_to "操作マニュアル", "/manuals/index.html", target: '_blank'
+                li= render 'layouts/account'
+    .container
+      = yield
+      hr/
+      footer
+        = render 'layouts/about_service'

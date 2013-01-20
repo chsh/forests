@@ -1,0 +1,27 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to @site.name, site_path(@site)
+h1= t :pages_label
+td= link_to '(Re)generate pages form imported files', regenerate_site_pages_path(@site), :confirm => t(:destroy_confirm_label), :method => :post
+table
+  tr
+    th= t :name_label
+    th Content
+    th Published
+  - @pages.each do |page|
+    tr
+      td= link_to page.name, "/#{@site.name}/# page.name
+      td= h (page.editable_content || '')[0, 30]
+      td= h page.published
+      td= link_to t(:show_link_label), [@site, page]
+      td= link_to t(:edit_link_label), edit_site_page_path(@site, page)
+      td= link_to t(:destroy_link_label), [@site, page], :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+br/
+.button style="width:70px"
+h1 Blocks
+ul
+  - @site.blocks.each do |block|
+    li= link_to block.name, site_block_path(@site, block)

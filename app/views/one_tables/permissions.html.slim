@@ -1,0 +1,13 @@
+h1 権限割り当て一覧
+table
+  tr
+    th 利用者
+    th 権限
+    th 操作
+  - UserModelPermission.permissions_for(@one_table).each do |ump|
+    tr
+      td= ump.user.login
+      td= t ump.operation_as_symbol
+      td= link_to t(:destroy_link_label), unassign_one_table_path(@one_table, user_login: ump.user.login), :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+br/
+= link_to "追加", assign_one_table_path(@one_table)

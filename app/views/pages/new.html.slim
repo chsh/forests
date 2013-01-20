@@ -1,0 +1,30 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to @page.site.name, site_path(@page.site)
+  span style="color:#999999"
+  = link_to 'pages', site_pages_path(@page.site)
+h1= t :new_page_label
+= form_for([@site, @page]) do |f|
+  = error_messages @page
+  p
+    = f.label :name
+    br/
+    = f.text_field :name
+  p
+    = f.label :editable_content
+    br/
+    = f.text_area :editable_content
+  p
+    = f.label :language
+    br/
+    = f.select :language, PageLanguage.select_options
+  p
+    = f.label :keyword_logging
+    br/
+    = f.check_box :keyword_logging
+  p
+    = f.submit 'Create'
+.button style="width:70px"

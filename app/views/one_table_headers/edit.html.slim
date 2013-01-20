@@ -1,0 +1,49 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = link_to t(:headers_label), one_table_one_table_headers_path(@one_table)
+        span(class="divider") = "/"
+      li = t :editing_header_label
+
+.row
+  .span12
+    = form_for [@one_table, @one_table_header] do |f|
+      table
+        tr
+          th= t :primary_key_label
+          - if @one_table.one_table_headers.primary_key_present.count >= 3
+            - if f.object.primary_key?
+              td= f.check_box :primary_key
+            - else
+              td
+                = f.check_box :primary_key, disabled: :disabled
+                '
+                | すでにキー項目が3つ設定されているため、設定できません。
+          - else
+            td= f.check_box :primary_key
+        tr
+          th= t :label_label
+          td= f.text_field :label
+        tr
+          th= t :refname_label
+          td= f.text_field :refname
+        tr
+          th= t :kind_label
+          td= f.select :kind, OneTableHeader::KIND_LABELS
+        tr
+          th= t :multiple_label
+          td= f.check_box :multiple
+        tr
+          th= t(:metadata_json_label)
+          td= f.text_area :metadata_json
+      = submit_tag 'Update!'

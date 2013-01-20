@@ -1,0 +1,2 @@
+module OneTableTemplatesHelper
+end

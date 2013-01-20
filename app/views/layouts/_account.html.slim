@@ -1,0 +1,25 @@
+- if current_user
+  li.dropdown#usermenu
+    a(class="dropdown-toggle" data-toggle="dropdown" href="#usermenu")
+      = icon_tag :user
+      '
+      = current_user.login
+    ul.dropdown-menu
+      li
+        = link_to account_path do
+          = icon_tag :cog
+          =t :show_and_edit_account_label
+      li.divider
+      - if can? :manage, User
+        li
+          = link_to admin_users_path do
+            = icon_tag :user
+            =t :label_admin
+        li.divider
+      li
+        = link_to destroy_user_session_path, method: :delete do
+          = icon_tag :signout
+          =t :label_signout
+- else
+  = link_to new_user_session_path do
+    | Login

@@ -1,0 +1,15 @@
+.navtitle= t :site_management_label
+.navbox
+  ul.nav
+    li= link_to t(:site_information_label), site_path(@site)
+    - if current_user.level >= User::LEVEL_SITEADMIN
+      li= link_to t(:new_site_site_file_label),  new_site_site_file_path(@site)
+    li= link_to t(:site_site_files_label), site_site_files_path(@site)
+    - if current_user.level >= User::LEVEL_SITEADMIN
+      li= link_to t(:new_site_site_attribute_label), new_site_site_attribute_path(@site)
+    li= link_to t(:site_site_attributes_label), site_site_attributes_path(@site)
+    - if current_user.level >= User::LEVEL_SITEADMIN
+      li= link_to t(:new_site_block_label), new_site_block_path(@site)
+    li= link_to t(:site_blocks_label), site_blocks_path(@site)
+    li= link_to t(:ref_tables_site_label), ref_tables_site_path(@site)
+/! /navbox

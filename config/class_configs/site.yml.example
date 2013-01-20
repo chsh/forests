@@ -1,0 +1,21 @@
+
+development:
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 3.minutes
+
+production:
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 15.minutes
+
+test:
+  site:
+    exclude_patterns:
+    - "\\.DS_Store$"
+    - "\\bThumbs\\.db$"
+    virtualhost_lookup_interval: 1.second

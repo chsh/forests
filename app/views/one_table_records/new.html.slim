@@ -1,0 +1,29 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:tables_label), one_tables_path
+  span style="color:#999999"
+  = link_to @one_table.name, one_table_path(@one_table)
+  span style="color:#999999"
+  = t :new_row_label
+h1= t :new_row_label
+- if @one_table.file_fields?
+  - form_opts = { :html => { :multipart => true } }
+- else
+  - form_opts = {}
+= form_for [@one_table, @row], form_opts do |f|
+  table
+    - @row.each do |k, v|
+      tr
+        th= f.label v
+        td
+          - if @row.virtual_field?(v)
+            = f.text_field k, :disabled => 'disabled'
+          - elsif @row.file_field?(v)
+            = f.file_field k
+          - else
+            = f.text_field k
+  = submit_tag 'Create!'
+hr/
+div
+  .button style="width:70px"

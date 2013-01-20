@@ -1,0 +1,15 @@
+= form_for(@search_activity) do |f|
+  - if @search_activity.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@search_activity.errors.count, "error")
+        | prohibited this search_activity from being saved:
+      ul
+        - @search_activity.errors.full_messages.each do |msg|
+          li= msg
+  .field
+    = f.label :stamped_at
+    br/
+    = f.datetime_select :stamped_at
+  .actions
+    = f.submit

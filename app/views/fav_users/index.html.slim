@@ -1,0 +1,15 @@
+div
+  = link_to 'TOP', dashboard_path
+h1 Fav Users
+table
+  tr
+    th Login
+    th Email
+    th= t :operations_label
+  - @fav_users.each do |user|
+    tr
+      td= user.login
+      td= user.email
+      td
+div
+  = link_to 'New', new_fav_user_path

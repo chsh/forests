@@ -1,0 +1,36 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, @one_table
+        span(class="divider") = "/"
+      li
+        = t(:search)
+        ' :
+        = @query_form.q
+
+.row
+  .span12
+    h1= t :records_label
+    div
+      = form_for @query_form, url: search_one_table_path(@one_table), method: :get, html: {style: "margin: 5px; padding: 5px"} do |f|
+        = f.text_field :q, size: 80
+        = submit_tag 'Search!', class: 'btn btn-primary'
+    div
+      = @rows.metadata[:total_hits]
+      | 件中(#{@pos_start}〜#{@pos_end})
+      = link_to_if @page > 0, '<前ページ', search_one_table_path(@one_table, page: @page - 1, query_form: {q: params[:q]})
+      = link_to_if (@rows.metadata[:total_hits] - @pos_end) > 0, '次ページ>', search_one_table_path(@one_table, page: @page + 1, query_form: {q: params[:q]})
+
+    div
+      - if can? :edit, OneTable
+        = render partial: 'one_table_records/edit'
+      - else
+        = render partial: 'one_table_records/show'
+

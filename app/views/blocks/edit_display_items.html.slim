@@ -1,0 +1,70 @@
+javascript:
+  $(function() {
+    $("#sortable tbody").sortable();
+    $("#sortable tbody").disableSelection();
+    $('#edit_block_form').submit(function(){
+      var din = 1;
+      $('#sortable tbody>tr.item_row').each(function(index, element) {
+        var row = $(element);
+        var ss = row.children('td.select_state').first();
+        var di = ss.children('input.display_index');
+        var ch = ss.children('input[type=checkbox]');
+        if (ch.is(":checked")) {
+          di.val(din);
+          din += 1;
+        } else {
+          di.val('');
+        }
+      });
+      return true;
+    });
+  });
+
+css:
+  table, td, th {
+    border-bottom: 1px #dcdcdc solid;
+  }
+
+h1= t :editing_display_items_block_label
+= form_for([@site, @block], :html => {:id => 'edit_block_form'}) do |f|
+  = error_messages @block
+  p
+    = f.label :name
+    br/
+    = f.text_field :name
+  p
+    = f.label :table
+    br/
+    = h @block.one_table.name
+  p
+    = 'Search Items'
+    br/
+  table#sortable
+    tbody.content
+      tr
+        th
+        th= t :display
+        th= t :name_label
+      - @block.block_items.items.each do |item|
+        tr.item_row
+          - f.fields_for 'search_items[]', item do |it|
+            td style="cursor: move"
+            td.select_state style="cursor: move"
+              = it.check_box :selected
+              = it.hidden_field :display_index, :class => 'display_index'
+            td style="cursor: move"
+              = item.label
+              = it.hidden_field :input_type
+  p
+    = f.label :content
+    br/
+    = f.text_area :content
+  p
+    = f.label :show_in_menu, t(:show_in_menu_label)
+    br/
+    = f.check_box :show_in_menu
+  p
+    = f.submit 'Update'
+= link_to t(:show_link_label), [@site, @block]
+| \
+| \#{link_to t(:back_link_label), site_blocks_path(@site)}

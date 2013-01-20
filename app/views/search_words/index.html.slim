@@ -1,0 +1,16 @@
+h1 Listing Search Words
+table
+  tr
+    th Index
+    th Display value
+    th Search value
+  - @search_words.each do |search_word|
+    tr
+      td= h search_word.index
+      td= h search_word.display_value
+      td= h search_word.search_value
+      td= link_to t(:show_link_label), search_word_list_search_word_path(@search_word_list, search_word)
+      td= link_to t(:edit_link_label), edit_search_word_list_search_word_path(@search_word_list, search_word)
+      td= link_to t(:destroy_link_label), search_word_list_search_word_path(@search_word_list, search_word), :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+br/
+= link_to 'New search_word', new_search_word_list_search_word_path(@search_word_list)

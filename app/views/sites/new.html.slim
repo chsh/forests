@@ -1,0 +1,34 @@
+h1= t :show_site_label_1of2
+div
+  | ベースとなるサイトを選択してください。
+  | サイトタイトルをクリックすると、別ウインドウでそのサイトの内容を確認できます。
+  | まったく新しくサイトを作る場合は、#{t :create_new_site}のラジオボタンを選択し、次のページへ進んでください。
+- form_tag({ :controller => 'sites', :action => 'new2'}, {:method => :post }) do
+  #ui-site-select-tab
+    ul
+      li= link_to t(:my_sites), '#my-sites-tab'
+      li= link_to t(:cloneble_sites), '#clonable-sites-tab'
+    #my-sites-tab
+      = radio_button_tag 'source_site_id', 0, :checked => true
+      = t :create_new_site
+      br/
+      - @my_sites.each do |site|
+        = radio_button_tag 'source_site_id', site.id
+        = link_to site.name, site.index_url, :target => '_blank'
+        = site.description
+        br/
+    #clonable-sites-tab
+      - clonable_sites = Site.find_clonables
+      - if clonable_sites.empty?
+        = t :no_clonable_sites
+      - else
+        - Site.find_clonables.each do |site|
+          = radio_button_tag 'source_site_id', site.id
+          = link_to site.name, site.index_url, :target => '_blank'
+          br/
+  javascript:
+    $(function() {
+      $('#ui-site-select-tab').tabs();
+    });
+    p
+    = submit_tag t(:enter_site_name)

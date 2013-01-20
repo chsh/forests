@@ -1,0 +1,111 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = @one_table.name
+
+= render 'common/show_flash'
+
+.row
+  .span6
+    = form_for QueryForm.new, url: search_one_table_path(@one_table) do |f|
+      = f.text_field :q, class: 'input-xlarge'
+      '
+      = f.submit t(:search), class: 'btn btn-primary'
+.row
+  .span6
+    table.table
+      tr
+        th = t(:name)
+        td= @one_table.name
+      tr
+        th= t :status_label
+        td
+          - if @one_table.status.present?
+            = t("import.status.#{@one_table.status}")
+            span(style="float:right") = image_tag 'processing.gif', size: '20x20'
+      tr
+        th
+          - if can? :edit, OneTable
+            = t :headers_edit_label
+          - else
+            = t :headers_view_label
+        td= link_to t(:show_link_label), [@one_table, :one_table_headers]
+      tr
+        th
+          - if can? :edit, OneTable
+            = t :data_edit_label
+          - else
+            = t :data_view_label
+        td= link_to "#{t(:show_num_data_label)} (#{@one_table.row_size})", \
+          [@one_table, :one_table_records]
+      - if @one_table.template_file
+        tr
+          th Data Template
+          td= link_to t(:download_link_label), template_one_table_path(@one_table)
+      - if can?(:edit, OneTable) && @one_table.one_table_template_creatable?
+        tr
+          th = t(:data_upload)
+          td = link_to t(:import_one_table_label), import_one_table_path(@one_table)
+      - if can? :copy, OneTable
+        tr
+          th = t(:duplicate_one_table)
+          td
+            = form_for [:duplicate, @one_table] do |f|
+              = f.text_field :name
+              '
+              = f.submit 'コピー実行'
+  .span6
+    - if @one_table.one_table_template_creatable?
+      h4 = link_to t(:listing_one_table_templates),one_table_one_table_templates_path(@one_table)
+      table.table
+        thead
+          tr
+            th = t(:name)
+            th = t(:format)
+            th = t(:download)
+        tbody
+          - @one_table.one_table_templates.by_user(current_user).each do |ott|
+            tr
+              td = link_to ott.name, [@one_table, ott]
+              td = ott.output_style_as_string
+              td = link_to icon_tag(:download_alt), download_one_table_one_table_template_path(@one_table, ott)
+      hr/
+      = link_to t(:new_one_table_template), new_one_table_one_table_template_path(@one_table)
+    - else
+      p ダウンロード(出力フォーマット)はフィールド一覧でキー項目を１つ以上設定すると作成できるようになります。
+.row
+  .span12
+    hr/
+    h4 = t(:operation_activities)
+    table.table
+      thead
+        tr
+          th = t(:date_and_time)
+          th = t(:operator)
+          th = t(:command)
+      - @one_table.activities.order('created_at desc').each do |activity|
+        tbody
+          tr
+            td = activity.created_at.strftime('%Y/%m/%d %H:%M:%S')
+            td = activity.user.email
+            td
+              | 「
+              = activity.target.try(:name)
+              | 」
+              | を
+              = t(activity.action)
+
+- unless @one_table.status.blank?
+  javascript:
+    $(function() {
+      setTimeout(function() {
+        window.location.reload();
+      }, 1000 * 10);
+    });

@@ -1,0 +1,44 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :Block_label
+h1= t :Block_label
+table
+  tr
+    th width="200px;"
+    td= h @block.name
+  tr
+    th= t :kind_label
+    td= h @block.kind
+  tr
+    th= t :content_label
+    td= h @block.content
+  tr
+    th= t :user_label
+    td= h @block.user_id
+  tr
+    th= t :conditions_label
+    td= h @block.conditions
+  tr
+    th= t :order_label
+    td= h @block.order
+  tr
+    th
+      = t :limit_label
+      | \:
+    td= h @block.limit
+  tr
+    th= t :show_in_menu_label
+    td= @block.show_in_menu?
+h2= t :refered_pages_label
+div
+  ul
+    - @block.refered_pages.each do |page|
+      li= link_to page.name, site_page_path(@block.site, page)
+div align="right"
+  span.button= link_to t(:edit_link_label), edit_site_block_path(@site, @block)
+  span.button= link_to t(:back_link_label), site_blocks_path(@site)

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!--
+ This is the Solr schema file. This file should be named "schema.xml" and
+ should be in the conf directory under the solr home
+ (i.e. ./solr/conf/schema.xml by default)
+ or located where the classloader for the Solr webapp can find it.
+
+ This example schema is the recommended starting point for users.
+ It should be kept correct and concise, usable out-of-the-box.
+
+ For more information, on how to customize this file, please see
+ http://wiki.apache.org/solr/SchemaXml
+-->
+
+<schema name="forests" version="2.0">
+  <types>
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="integer" class="solr.IntField" omitNorms="false"/>
+    <fieldType name="long" class="solr.LongField" omitNorms="false"/>
+    <fieldType name="float" class="solr.FloatField" omitNorms="false"/>
+    <fieldType name="double" class="solr.DoubleField" omitNorms="false"/>
+    <fieldType name="sint" class="solr.SortableIntField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="slong" class="solr.SortableLongField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="sfloat" class="solr.SortableFloatField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="sdouble" class="solr.SortableDoubleField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="date" class="solr.DateField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="text" class="solr.TextField" omitNorms="false">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+ </types>
+
+
+ <fields>
+   <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
+   <field name="dom_ki" type="integer" indexed="true" stored="true" multiValued="false"/>
+   <field name="dom_ks" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="attrs" type="string" indexed="false" stored="true" multiValued="false"/>
+   <field name="text" type="text" indexed="true" stored="false" multiValued="true"/>
+
+   <dynamicField name="*_i" type="integer" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_t" type="text" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_f" type="float" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_b" type="boolean" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_d" type="date" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_s" type="string" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_ri" type="sint" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_rf" type="sfloat" indexed="true" stored="false" multiValued="false"/>
+
+   <dynamicField name="*_im" type="integer" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_tm" type="text" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_fm" type="float" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_bm" type="boolean" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_dm" type="date" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_sm" type="string" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_rim" type="sint" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_rfm" type="sfloat" indexed="true" stored="false" multiValued="true"/>
+
+   <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="false"/>
+   <dynamicField name="*_s_mv" type="string" indexed="true" stored="false" multiValued="true"/>
+   <dynamicField name="*_display" type="text" indexed="false" stored="true" multiValued="true"/>
+   <!-- local lucene field types -->
+   <field name="lat" type="sdouble" indexed="true" stored="true"/><!-- must match the latField in solrconfig.xml -->
+   <field name="lng" type="sdouble" indexed="true" stored="true"/><!-- must match the lngField in solrconfig.xml -->
+   <field name="geo_distance" type="sdouble"/> <!-- Optional but used for distributed searching -->
+   <dynamicField name="_local*" type="sdouble" indexed="true" stored="false"/><!-- used internally by localsolr -->
+ </fields>
+
+ <uniqueKey>id</uniqueKey>
+ <defaultSearchField>text</defaultSearchField>
+
+ <copyField source="*_t" dest="text"/>
+ <copyField source="*_tm" dest="text"/>
+ <copyField source="*_s" dest="text"/>
+ <copyField source="*_sm" dest="text"/>
+ <copyField source="*_i" dest="text"/>
+ <copyField source="*_im" dest="text"/>
+ <copyField source="*_f" dest="text"/>
+ <copyField source="*_fm" dest="text"/>
+ <copyField source="*_facet" dest="text"/>
+
+ <solrQueryParser defaultOperator="AND"/>
+
+</schema>

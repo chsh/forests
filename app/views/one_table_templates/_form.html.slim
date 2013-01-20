@@ -1,0 +1,68 @@
+- @first_row = @one_table.find_first
+= form_for [@one_table, @one_table_template] do |f|
+  - if @one_table_template.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@one_table_template.errors.count, "error")} prohibited this one_table_template from being saved:"
+      ul
+        - @one_table_template.errors.full_messages.each do |message|
+          li = message
+  = f.hidden_field :query
+  .row
+    .span3
+      = f.label :name
+      = f.text_field :name
+    .span3
+      = f.label :output_format
+      = f.select :output_format, OneTableTemplate::OUTPUT_FORMATS.map { |key, value| [t("fileformat.#{key}"), value] }
+    .span3
+      = f.label :output_encoding
+      = f.select :output_encoding, OneTableTemplate::OUTPUT_ENCODINGS
+    .span3
+      = f.label :output_lf
+      = f.select :output_lf, OneTableTemplate::OUTPUT_LFS.map { |key, value| [t("linefeed.#{key}"), value] }
+  - sort_orders = [[t(:label_order_asc), 'asc'], [t(:label_order_desc), 'desc']]
+  .row
+    .span3
+      = f.label :query
+      = f.text_field :query, class: 'span3'
+    .span3
+      = f.label :sort1_key
+      = f.select :sort1_key, @one_table_template.sort_keys, include_blank: true
+      = f.select :sort1_order, sort_orders
+    .span3
+      = f.label :sort2_key
+      = f.select :sort2_key, @one_table_template.sort_keys, include_blank: true
+      = f.select :sort2_order, sort_orders
+    .span3
+      = f.label :sort3_key
+      = f.select :sort3_key, @one_table_template.sort_keys, include_blank: true
+      = f.select :sort3_order, sort_orders
+
+  .row
+    .span12
+      table.table
+        thead
+          tr
+            th.span3 = t(:field_name)
+            th.span3 = t(:alternative_label)
+            th.span1 = t(:output_target)
+            th.span2 = t(:query_label)
+            th.span3 = t(:example_data)
+        tbody
+          = f.fields_for :one_table_template_one_table_headers do |fh|
+            tr
+              td.span3
+                = fh.object.one_table_header.label
+                = fh.hidden_field :one_table_header_id
+                = fh.hidden_field :display_index
+              td = fh.text_field :label, class: 'span3'
+              td = fh.text_field :index, class: 'span1'
+              td = fh.text_field :query, class: 'span2'
+              td(style="color: grey")
+                - if @first_row.present?
+                  = @first_row[fh.object.one_table_header.sysname].to_s[0, 25]
+                - else
+                  '
+  .row
+    .span12
+      .actions = f.submit 'Save', class: 'btn btn-primary'

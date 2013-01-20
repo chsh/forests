@@ -1,0 +1,61 @@
+.row
+  .span12
+    ul(class="breadcrumb")
+      li
+        = link_to 'TOP', dashboard_path
+        span(class="divider") = "/"
+      li
+        = link_to t(:tables_label), one_tables_path
+        span(class="divider") = "/"
+      li
+        = link_to @one_table.name, one_table_path(@one_table)
+        span(class="divider") = "/"
+      li
+        = t(:listing_one_table_templates)
+
+.row
+  .span12
+    h2 = t(:listing_one_table_templates)
+
+    table.table
+      thead
+        tr.row
+          th.span3 = t('activerecord.attributes.one_table_template.name')
+          th.span2 = t('activerecord.attributes.one_table_template.output_format')
+          th.span2 = t('activerecord.attributes.one_table_template.output_encoding')
+          th.span2 = t('activerecord.attributes.one_table_template.output_lf')
+          th.span3
+      tbody
+        - @one_table_templates.each do |ott|
+          tr.row
+            td.span3 = ott.name
+            td.span2 = t("fileformat.#{ott.output_format_as_string}")
+            td.span2 = ott.output_encoding_as_string
+            td.span2 = t("linefeed.#{ott.output_lf_as_string}")
+            td.span3
+              = link_to download_one_table_one_table_template_path(@one_table, ott) do
+                = icon_tag(:download_alt)
+                '
+                | ダウンロード
+              '
+              = link_to [@one_table, ott] do
+                = icon_tag(:search)
+                '
+                | 検索
+
+              '
+              = link_to edit_one_table_one_table_template_path(@one_table, ott) do
+                = icon_tag(:edit)
+                '
+                | 編集
+              '
+              = link_to [@one_table, ott], :method => :delete, \
+                :data => { :confirm => 'Are you sure?' } do
+                = icon_tag(:remove)
+                '
+                | 削除
+
+
+.row
+  .span12
+    = link_to t(:new_one_table_template), new_one_table_one_table_template_path(@one_table)

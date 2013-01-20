@@ -1,0 +1,24 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+h1= t :editing_site_label
+= form_for(@site) do |f|
+  = error_messages @site
+  table
+    tr
+      th width="250px"
+      td= f.text_field :name
+    tr
+      th= f.label :title, t(:title)
+      td= f.text_field :title
+    tr
+      th= f.label :description, t(:description)
+      td= f.text_area :description
+  p
+    = f.submit 'Update'
+div align="right"
+  span.button style="width:70px"
+  span.button style="width:70px"

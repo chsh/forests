@@ -1,0 +1,37 @@
+h1= t :show_site_label_2of2
+div
+  | 次にサイトのURLとして使われる文字列(パス名)を入力してください。
+  | パス名は英数字とハイフンのみが利用でき、最大で32文字です。
+  | パス名を定義することで
+  span
+    | http://#{request.host}/パス名/
+  | のような形でサイトにアクセスできるようになります。
+  | タイトルと説明はオプションです。日本語が使えますので、後からサイトの内容を参照する時にわかりやすいようなものを記述するとよいでしょう。
+  - if @site.source_site_id.blank?
+    | 今回は元になるサイトがありませんので、ファイルをアップロードしてサイトを作成することができます。
+    | これはあくまでも付加的な機能です。ファイルをアップロードせず、まったく新規にサイトを作っていくことも可能です。
+= form_for(@site, :html => {:multipart => true}) do |f|
+  = error_messages @site
+  table
+    tr
+      th= f.label :name, t(:path_name)
+      td= f.text_field :name
+    tr
+      th= f.label :title, t(:title)
+      td= f.text_field :title
+    tr
+      th= f.label :description, t(:description)
+      td= f.text_area :description
+    - if @site.source_site_id.blank?
+      tr
+        th= f.label :file, t(:file)
+        td= f.file_field :file
+    - if current_user.level == User::LEVEL_SYSTEMADMIN
+      tr
+        th= f.label :clonable, t(:clonable_label)
+        td= f.check_box :clonable
+  - unless @site.source_site_id.blank?
+    = f.hidden_field :source_site_id
+  p
+    = f.submit t(:create)
+.button style="width:70px"

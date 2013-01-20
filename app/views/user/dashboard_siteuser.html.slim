@@ -1,0 +1,36 @@
+- content_for :header_title do
+  | My Page
+div align="right"
+  .button style="width:70px"
+h1= t :editable_tables
+table
+  tr
+    th= t :name_label
+    th= t :operations_label
+    th= t :status_label
+  - current_user.accessible_one_tables.each do |ot|
+    tr
+      td= h ot.name
+      td
+        = link_to_if ot.permission.viewable?, t(:show_link_label), ot
+        = link_to_if ot.permission.removable?, t(:destroy_link_label), ot, \
+          :method => :delete, \
+          :data => { :confirm => t(:destroy_confirm_label) }
+      td= ot.status
+h1= t :editable_records
+table
+  tr
+    th Table Name
+    th ID
+    th= t :operations_label
+  - current_user.accessible_one_table_records.each do |otr|
+    tr
+      td= h otr.name
+      td= h otr.id
+      td
+        = link_to_if otr.permission.viewable?, t(:show_link_label), one_table_one_table_record_path(otr.one_table, otr.id)
+        = link_to_if otr.permission.removable?, t(:destroy_link_label), \
+          one_table_one_table_record_path(otr.one_table, otr.id), \
+          :method => :delete, :data => { :confirm => t(:destroy_confirm_label) }
+hr/
+.button style="width:70px"

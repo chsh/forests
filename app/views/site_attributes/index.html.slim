@@ -1,0 +1,25 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :listing_site_attribute_label
+h1= t :listing_site_attribute_label
+table
+  tr
+    th= t :key_label
+    th= t :value_label
+    th= t :operations_label
+  - @site_attributes.each do |sa|
+    tr
+      td= h sa.key
+      td
+        = sa.value_as_html
+      td
+        = link_to t(:edit_link_label), edit_site_site_attribute_path(@site, sa)
+        | \&nbsp;
+        | \#{link_to t(:destroy_link_label), site_site_attribute_path(@site, sa), :method => :delete, :data => {:confirm => t(:destroy_confirm_label) } }
+br/
+.button style="width:70px"

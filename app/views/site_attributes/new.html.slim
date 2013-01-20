@@ -1,0 +1,25 @@
+.breadcrumbs
+  = link_to 'TOP', dashboard_path
+  span style="color:#999999"
+  = link_to t(:sites_label), sites_path
+  span style="color:#999999"
+  = link_to site_title_or_name(@site), site_path(@site)
+  span style="color:#999999"
+  = t :new_site_attribute_label
+h1= t :new_site_attribute_label
+= form_for([@site, @site_attribute], :html => { :multipart => true }) do |f|
+  = error_messages @site_attribute
+  table
+    tr
+      th= f.label :key, t(:key_label)
+      td= f.text_field :key
+    tr
+      th= f.label :value, t(:value_label)
+      td= f.text_field :value
+    tr
+      th= f.label :file, t(:file_label)
+      td= f.file_field :file
+  p
+    = f.submit 'Create'
+    | \&nbsp;
+  .button style="width:70px"

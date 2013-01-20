@@ -1,0 +1,39 @@
+
+.row
+  .span12
+    - if @one_table.file_fields?
+      - form_opts = { :html => { :multipart => true } }
+    - else
+      - form_opts = {}
+    = form_for [@one_table, @row], form_opts do |f|
+      = submit_tag t(:update), class: 'btn btn-primary'
+      - if can? :remove, OneTable
+        span(style="margin-left: 15px")
+          = link_to '削除…', [@one_table, @row], method: :delete, confirm: 'このレコードを削除してもよいですか?', class: 'btn btn-danger'
+      table
+        - @row.each do |k, v|
+          tr
+            th= f.label k, v
+            td
+              - if @row.virtual_field?(v)
+                = f.text_field k, :disabled => 'disabled'
+              - elsif @row.multiple_field?(v)
+                - rk = @row[k].blank? ? [] : @row[k]
+                - rk.each_with_index do |iv, index|
+                  input(id="otr_index_#{k}_#{index}" name="one_table_record[# k}][]" type="text" value="#{iv.to_s.gsub(/\"/, '&quot;')}")
+                  | \&nbsp;
+                span(id="otr_last_marker_#{k}")
+                input(id="otr_index_#{k}_#{rk.size}" name="one_table_record[# k}][]" type="text" value="")
+                  | \&nbsp;
+              - elsif @row.file_field?(v)
+                - unless @row[k].blank?
+                  = view_by_type @row[k], :one_table_id => @one_table.id, :size_within => 40
+                  | \&nbsp;
+                = f.file_field k
+              - else
+                = f.text_field k
+      = submit_tag t(:update), class: 'btn btn-primary'
+      - if can? :remove, OneTable
+        span(style="margin-left: 15px")
+          = link_to '削除…', [@one_table, @row], method: :delete, confirm: 'このレコードを削除してもよいですか?', class: 'btn btn-danger'
+
